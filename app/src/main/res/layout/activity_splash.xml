@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <yanzhikai.textpath.SyncTextPathView
+        android:id="@+id/tv_dream_come_true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        app:duration="5000"
+        app:showPainter="true"
+        app:repeat="REVERSE"
+        app:text="梦想成真"
+        app:textInCenter="true"
+        app:paintStrokeColor="@android:color/holo_red_light"
+        app:textSize="60sp"/>
+
+</RelativeLayout>

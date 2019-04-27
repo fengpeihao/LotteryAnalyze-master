@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <HorizontalScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:scrollbars="none"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/text_number"
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="红球号码"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="出现次数"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="理论出现次数"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="出现频率"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="平均遗漏"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="最大遗漏"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="上次遗漏"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="本次遗漏"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="预出几率"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
+                    android:text="回补几率"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+</android.support.constraint.ConstraintLayout>

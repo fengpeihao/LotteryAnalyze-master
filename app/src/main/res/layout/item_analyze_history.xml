@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/shape_circle_blue"
+        android:gravity="center"
+        android:text="8"
+        android:textColor="@android:color/white"
+        android:textSize="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_total_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="出现的总次数:"
+        app:layout_constraintBottom_toBottomOf="@id/tv_number"
+        app:layout_constraintLeft_toRightOf="@id/tv_number"
+        app:layout_constraintTop_toTopOf="@id/tv_number" />
+
+    <TextView
+        android:id="@+id/tv_total_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="125"
+        android:textColor="@android:color/holo_orange_dark"
+        app:layout_constraintBottom_toBottomOf="@id/text_total_count"
+        app:layout_constraintLeft_toRightOf="@id/text_total_count"
+        app:layout_constraintTop_toTopOf="@id/text_total_count" />
+
+    <TextView
+        android:id="@+id/text_max_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="历史最大遗漏:"
+        app:layout_constraintBottom_toBottomOf="@id/text_total_count"
+        app:layout_constraintLeft_toRightOf="@id/tv_total_count"
+        app:layout_constraintTop_toTopOf="@id/text_total_count" />
+
+    <TextView
+        android:id="@+id/tv_max_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="94"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintBottom_toBottomOf="@id/text_total_count"
+        app:layout_constraintLeft_toRightOf="@id/text_max_omit"
+        app:layout_constraintTop_toTopOf="@id/text_total_count" />
+
+    <TextView
+        android:id="@+id/text_current_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="当前遗漏:"
+        app:layout_constraintBottom_toBottomOf="@id/text_total_count"
+        app:layout_constraintLeft_toRightOf="@id/tv_max_omit"
+        app:layout_constraintTop_toTopOf="@id/text_total_count" />
+
+    <TextView
+        android:id="@+id/tv_current_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="70"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="@id/text_total_count"
+        app:layout_constraintLeft_toRightOf="@id/text_current_omit"
+        app:layout_constraintTop_toTopOf="@id/text_total_count" />
+
+    <TextView
+        android:id="@+id/text_total_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:text="总遗漏次数:"
+        app:layout_constraintTop_toBottomOf="@id/tv_number"/>
+
+    <TextView
+        android:id="@+id/tv_total_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="70"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="@id/text_total_omit"
+        app:layout_constraintLeft_toRightOf="@id/text_total_omit"
+        app:layout_constraintTop_toTopOf="@id/text_total_omit" />
+
+    <TextView
+        android:id="@+id/text_ave_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toRightOf="@id/tv_total_omit"
+        android:layout_marginLeft="@dimen/dp_5"
+        android:text="平均漏次数:"
+        app:layout_constraintTop_toTopOf="@id/tv_total_omit"/>
+
+    <TextView
+        android:id="@+id/tv_ave_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="70"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintBottom_toBottomOf="@id/text_ave_omit"
+        app:layout_constraintLeft_toRightOf="@id/text_ave_omit"
+        app:layout_constraintTop_toTopOf="@id/text_ave_omit" />
+
+    <TextView
+        android:id="@+id/text_continuous_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:text="历史出现连续长度次数："
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_total_omit" />
+
+    <TextView
+        android:id="@+id/tv_continuous_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="{1=104,2=9,3=1}"
+        android:textColor="@android:color/holo_orange_light"
+        app:layout_constraintLeft_toRightOf="@id/text_continuous_count"
+        app:layout_constraintTop_toTopOf="@id/text_continuous_count" />
+
+    <TextView
+        android:id="@+id/text_omit_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:text="历史遗漏长度次数："
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_continuous_count" />
+
+    <TextView
+        android:id="@+id/tv_omit_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:textColor="@android:color/secondary_text_light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_omit_count" />
+
+    <TextView
+        android:id="@+id/text_omit_periods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:text="历史遗漏期数"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_omit_count" />
+
+    <TextView
+        android:id="@+id/tv_omit_periods"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:textColor="@android:color/secondary_text_light"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_omit_periods" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginRight="@dimen/dp_12"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_omit_periods" />
+</android.support.constraint.ConstraintLayout>

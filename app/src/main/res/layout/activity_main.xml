@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_ssq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="双色球" />
+
+    <Button
+        android:id="@+id/btn_dlt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="大乐透" />
+
+    <Button
+        android:id="@+id/btn_dlt_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="双色球历史数据" />
+
+    <Button
+        android:id="@+id/btn_ssq_blue_ball_analyze"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="双色球蓝球历史数据分析" />
+
+    <Button
+        android:id="@+id/btn_ssq_red_ball_analyze"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="双色球红球球历史数据分析" />
+
+    <Button
+        android:id="@+id/btn_ssq_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="双色球红球遗漏数据分析" />
+
+    <Button
+        android:id="@+id/btn_ssq_limit_omit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="双色球红球历史遗漏数据分析" />
+</LinearLayout>
