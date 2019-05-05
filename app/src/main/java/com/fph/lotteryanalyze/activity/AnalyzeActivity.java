@@ -39,7 +39,7 @@ import java.util.TreeSet;
 
 public class AnalyzeActivity extends BaseActivity implements AnalyzeContract.View {
     private AnalyzePresenter mPresenter = new AnalyzePresenter(this);
-    private NewestDataAdapter mAdapter = new NewestDataAdapter();
+    private NewestDataAdapter mAdapter = new NewestDataAdapter("ssq");
     private List<LotteryEntity> mList;
     private HashMap<Integer, Integer> redMap = new HashMap<>();
     private HashMap<Integer, Integer> blueMap = new HashMap<>();
@@ -56,6 +56,7 @@ public class AnalyzeActivity extends BaseActivity implements AnalyzeContract.Vie
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
+        @Override
         public void handleMessage(Message msg) {
 
             switch (msg.what) {
@@ -99,6 +100,7 @@ public class AnalyzeActivity extends BaseActivity implements AnalyzeContract.Vie
                     spannableString.setSpan(new ForegroundColorSpan(Color.BLACK), 17, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     mTvRedExists.setText(spannableString);
                     break;
+                    default:
             }
         }
     };
@@ -112,9 +114,11 @@ public class AnalyzeActivity extends BaseActivity implements AnalyzeContract.Vie
     protected void init() {
         initvViews();
         mList = new LotteryDaoUtils(this).queryAllLottery();
-        if (mList == null) mList = new ArrayList<>();
+        if (mList == null) {
+            mList = new ArrayList<>();
+        }
         getBallNum();
-        mPresenter.getNewestData("ssq");
+        mPresenter.getSsqData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -347,7 +351,7 @@ public class AnalyzeActivity extends BaseActivity implements AnalyzeContract.Vie
     }
 
     @Override
-    public void getNewestData(@NotNull List<? extends LotteryEntity> data) {
-        mAdapter.setList(data);
+    public void getSsqData(@NotNull List<? extends LotteryEntity> data) {
+        mAdapter.setSsqList(data);
     }
 }

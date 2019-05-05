@@ -7,8 +7,8 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
-import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
+import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.contract.SplashContract;
 import com.fph.lotteryanalyze.presenter.SplashPresenter;
 
@@ -35,7 +35,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     protected void init() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 222);
-        }else{
+        } else {
             mPresenter.getData();
             mPresenter.getDLTData();
         }
@@ -50,10 +50,12 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
         }, 5000);
     }
 
-    private void skipToMain() {
+    private synchronized void skipToMain() {
         if (isSSQLoaded && isDLTLoaded && isAnimFinish) {
             mTv_dream_come_true.stopAnimation();
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         }
@@ -72,12 +74,14 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
+        switch (requestCode) {
             case 222:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mPresenter.getData();
                     mPresenter.getDLTData();
                 }
+                break;
+            default:
                 break;
         }
     }

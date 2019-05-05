@@ -21,10 +21,12 @@ import com.fph.lotteryanalyze.adapter.AnalyzeAdapter;
 import com.fph.lotteryanalyze.adapter.NewestDataAdapter;
 import com.fph.lotteryanalyze.bean.AnalyzeBean;
 import com.fph.lotteryanalyze.contract.AnalyzeContract;
+import com.fph.lotteryanalyze.contract.DltAnalyzeContract;
 import com.fph.lotteryanalyze.db.DltLotteryDaoUtils;
 import com.fph.lotteryanalyze.db.DltLotteryEntity;
 import com.fph.lotteryanalyze.db.LotteryEntity;
 import com.fph.lotteryanalyze.presenter.AnalyzePresenter;
+import com.fph.lotteryanalyze.presenter.DltAnalyzePresenter;
 import com.fph.lotteryanalyze.utils.DeviceUtils;
 import com.fph.lotteryanalyze.widget.StatisticsView;
 
@@ -41,9 +43,9 @@ import java.util.TreeSet;
  * Created by fengpeihao on 2018/5/10.
  */
 
-public class DltAnalyzeActivity extends BaseActivity implements AnalyzeContract.View {
-    private AnalyzePresenter mPresenter = new AnalyzePresenter(this);
-    private NewestDataAdapter mAdapter = new NewestDataAdapter();
+public class DltAnalyzeActivity extends BaseActivity implements DltAnalyzeContract.View {
+    private DltAnalyzePresenter mPresenter = new DltAnalyzePresenter(this);
+    private NewestDataAdapter mAdapter = new NewestDataAdapter("dlt");
     private List<DltLotteryEntity> mDltList;
     private HashMap<Integer, Integer> redMap = new HashMap<>();
     private HashMap<Integer, Integer> blueMap = new HashMap<>();
@@ -64,6 +66,7 @@ public class DltAnalyzeActivity extends BaseActivity implements AnalyzeContract.
 
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
+        @Override
         public void handleMessage(Message msg) {
 
             switch (msg.what) {
@@ -115,6 +118,7 @@ public class DltAnalyzeActivity extends BaseActivity implements AnalyzeContract.
                     spannableString.setSpan(new ForegroundColorSpan(Color.BLACK), 15, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                     mTvRedExists.setText(spannableString);
                     break;
+                    default:
             }
         }
     };
@@ -129,9 +133,11 @@ public class DltAnalyzeActivity extends BaseActivity implements AnalyzeContract.
     protected void init() {
         initvViews();
         mDltList = new DltLotteryDaoUtils(this).queryAllLottery();
-        if (mDltList == null) mDltList = new ArrayList<>();
+        if (mDltList == null) {
+            mDltList = new ArrayList<>();
+        }
         getBallNum();
-        mPresenter.getNewestData("dlt");
+        mPresenter.getDltData();
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
@@ -422,7 +428,7 @@ public class DltAnalyzeActivity extends BaseActivity implements AnalyzeContract.
     }
 
     @Override
-    public void getNewestData(@NotNull List<? extends LotteryEntity> data) {
-        mAdapter.setList(data);
+    public void getDltData(@NotNull List<? extends DltLotteryEntity> data) {
+        mAdapter.setDltList(data);
     }
 }

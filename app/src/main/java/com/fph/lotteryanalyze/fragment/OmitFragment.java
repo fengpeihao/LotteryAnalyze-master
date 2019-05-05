@@ -1,17 +1,16 @@
-package com.fph.lotteryanalyze.activity;
-
-import org.jetbrains.annotations.Nullable;
-
-import com.fph.lotteryanalyze.base.BaseFragment;
-import com.fph.lotteryanalyze.R;
-import com.fph.lotteryanalyze.adapter.OmitAdapter;
-import com.fph.lotteryanalyze.base.LazyFragment;
-import com.fph.lotteryanalyze.utils.AnalyzeUtils;
+package com.fph.lotteryanalyze.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+
+import com.fph.lotteryanalyze.R;
+import com.fph.lotteryanalyze.adapter.OmitAdapter;
+import com.fph.lotteryanalyze.base.LazyFragment;
+import com.fph.lotteryanalyze.utils.AnalyzeUtils;
+
+import org.jetbrains.annotations.Nullable;
 
 import butterknife.BindView;
 

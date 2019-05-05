@@ -3,12 +3,12 @@ package com.fph.lotteryanalyze.activity;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
+import com.fph.lotteryanalyze.base.BaseActivity;
+import com.fph.lotteryanalyze.fragment.OmitFragment;
 
 import butterknife.BindView;
 

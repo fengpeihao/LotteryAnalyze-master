@@ -13,14 +13,14 @@ import com.fph.lotteryanalyze.model.AnalyzeModel
  */
 interface AnalyzeContract {
     interface View : BaseView {
-        fun getNewestData(data: List<LotteryEntity>)
+        fun getSsqData(data: List<LotteryEntity>)
     }
 
     interface Model : BaseModel {
-        fun getNewestData(type: String, subscriber: Common2Subscriber<LotteryBean>)
+        fun getSsqData(subscriber: Common2Subscriber<LotteryBean>)
     }
 
     abstract class Presenter : BasePresenter<View, AnalyzeModel>() {
-        abstract fun getNewestData(type: String)
+        abstract fun getSsqData()
     }
 }

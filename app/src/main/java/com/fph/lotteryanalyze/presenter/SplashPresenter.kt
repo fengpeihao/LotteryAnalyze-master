@@ -127,7 +127,8 @@ class SplashPresenter : SplashContract.Presenter {
         val format = SimpleDateFormat("yyyy").format(Date())
         parse(format.toInt())
         LotteryDaoUtils(mView).insertMultLottery(list)
-        outPut(list)
+        mHandler.sendEmptyMessage(1)
+//        outPut(list)
     }
 
     private fun parse(year: Int) {

@@ -58,9 +58,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_dlt_history.setOnClickListener {
+        btn_history.setOnClickListener {
             val intent = Intent(this, DataListActivity::class.java)
-            intent.putExtra("type", "dlt")
             startActivity(intent)
         }
 

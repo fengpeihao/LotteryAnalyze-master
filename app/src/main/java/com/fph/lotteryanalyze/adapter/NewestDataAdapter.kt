@@ -8,28 +8,49 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.fph.lotteryanalyze.R
+import com.fph.lotteryanalyze.db.DltLotteryEntity
 import com.fph.lotteryanalyze.db.LotteryEntity
 import com.fph.lotteryanalyze.widget.LotteryView
 
 /**
  * Created by fengpeihao on 2018/4/19.
  */
-class NewestDataAdapter : RecyclerView.Adapter<NewestDataAdapter.ViewHolder>() {
+class NewestDataAdapter : RecyclerView.Adapter<NewestDataAdapter.ViewHolder> {
 
-    private var mList = ArrayList<LotteryEntity>()
+    constructor(type: String) {
+        mType = type
+    }
 
-    fun setList(list: List<LotteryEntity>?) {
-        mList.clear()
-        mList.addAll(list ?: ArrayList<LotteryEntity>())
+    private var mSsqList = ArrayList<LotteryEntity>()
+    private var mDltList = ArrayList<DltLotteryEntity>()
+    private var mType = "ssq"
+
+    fun setSsqList(list: List<LotteryEntity>?) {
+        mSsqList.clear()
+        mSsqList.addAll(list ?: ArrayList<LotteryEntity>())
+        notifyDataSetChanged()
+    }
+
+    fun setDltList(list: List<DltLotteryEntity>?) {
+        mDltList.clear()
+        mDltList.addAll(list ?: ArrayList<DltLotteryEntity>())
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val lotteryBean = mList[position]
-        holder.getView<LotteryView>(R.id.lottery_view).setData(lotteryBean.opencode)
-        val date = lotteryBean.opentime.split(" ")[0]
-        holder.setText(R.id.tv_date, date)
-        holder.setText(R.id.tv_periods, lotteryBean.expect)
+        if (mType == "ssq") {
+            val lotteryBean = mSsqList[position]
+            holder.getView<LotteryView>(R.id.lottery_view).setData(lotteryBean.opencode)
+            val date = lotteryBean.opentime.split(" ")[0]
+            holder.setText(R.id.tv_date, date)
+            holder.setText(R.id.tv_periods, lotteryBean.expect)
+        } else {
+            val lotteryBean = mDltList[position]
+            holder.getView<LotteryView>(R.id.lottery_view).setData(lotteryBean.opencode)
+            val date = lotteryBean.opentime.split(" ")[0]
+            holder.setText(R.id.tv_date, date)
+            holder.setText(R.id.tv_periods, lotteryBean.expect)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewestDataAdapter.ViewHolder {
@@ -38,7 +59,11 @@ class NewestDataAdapter : RecyclerView.Adapter<NewestDataAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return mList.size
+        if (mType == "ssq") {
+            return mSsqList.size
+        } else {
+            return mDltList.size
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

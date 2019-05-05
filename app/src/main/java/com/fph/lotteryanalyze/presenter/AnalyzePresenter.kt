@@ -16,31 +16,8 @@ class AnalyzePresenter : AnalyzeContract.Presenter {
         setVM(view, AnalyzeModel())
     }
 
-    override fun getNewestData(type: String) {
-//        mModel.getNewestData(type, object : Common2Subscriber<LotteryBean>() {
-//            override fun netError(message: String) {
-//
-//            }
-//
-//            override fun getData(t: LotteryBean) {
-//                if (t.data != null)
-//                    mView.getNewestData(t.data!!)
-//            }
-//        })
-        if ("ssq".equals(type)) {
-            val queryLast = LotteryDaoUtils(mView as Context).queryLast()
-            mView.getNewestData(queryLast)
-        } else {
-            val queryLast = DltLotteryDaoUtils(mView as Context).queryLast()
-            val arrayList = ArrayList<LotteryEntity>()
-            for (item in queryLast) {
-                val lotteryEntity = LotteryEntity()
-                lotteryEntity.opencode = item.opencode
-                lotteryEntity.expect = item.expect
-                lotteryEntity.opentime = item.opentime
-                arrayList.add(lotteryEntity)
-            }
-            mView.getNewestData(arrayList)
-        }
+    override fun getSsqData() {
+        val queryLast = LotteryDaoUtils(mView as Context).queryLast()
+        mView.getSsqData(queryLast)
     }
 }

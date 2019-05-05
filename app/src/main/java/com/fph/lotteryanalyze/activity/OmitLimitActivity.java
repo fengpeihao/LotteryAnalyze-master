@@ -1,20 +1,17 @@
 package com.fph.lotteryanalyze.activity;
 
-import com.fph.lotteryanalyze.base.BaseActivity;
-import com.fph.lotteryanalyze.R;
-import com.fph.lotteryanalyze.utils.NumberUtils;
-
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.fph.lotteryanalyze.R;
+import com.fph.lotteryanalyze.base.BaseActivity;
+import com.fph.lotteryanalyze.fragment.OmitFragment;
+import com.fph.lotteryanalyze.utils.NumberUtils;
 
 import java.util.ArrayList;
 import java.util.List;

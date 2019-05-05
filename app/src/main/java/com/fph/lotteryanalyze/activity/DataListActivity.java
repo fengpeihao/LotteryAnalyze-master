@@ -1,22 +1,25 @@
 package com.fph.lotteryanalyze.activity;
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 
-import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
-import com.fph.lotteryanalyze.adapter.NewestDataAdapter;
-import com.fph.lotteryanalyze.db.LotteryDaoUtils;
-import com.fph.lotteryanalyze.db.LotteryEntity;
+import com.fph.lotteryanalyze.base.BaseActivity;
+import com.fph.lotteryanalyze.fragment.DataListFragment;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import butterknife.BindView;
 
 public class DataListActivity extends BaseActivity {
 
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.tab_layout)
+    TabLayout mTabLayout;
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
+    private String[] mTitles = {"双色球", "大乐透"};
+    private String[] mTypes = {"ssq", "dlt"};
 
     @Override
     protected int getLayoutId() {
@@ -25,18 +28,24 @@ public class DataListActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        mRecyclerView = findViewById(R.id.recycler_view);
-        LotteryDaoUtils lotteryDaoUtils = new LotteryDaoUtils(this);
-        List<LotteryEntity> lotteryEntities = lotteryDaoUtils.queryAllLottery();
-        Collections.sort(lotteryEntities, new Comparator<LotteryEntity>() {
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
-            public int compare(LotteryEntity o1, LotteryEntity o2) {
-                return o2.getOpentime().compareTo(o1.getOpentime());
+            public Fragment getItem(int i) {
+                DataListFragment dataListFragment = DataListFragment.getInstance(mTypes[i]);
+                return dataListFragment;
+            }
+
+            @Override
+            public int getCount() {
+                return mTitles.length;
+            }
+
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mTitles[position];
             }
         });
-        NewestDataAdapter adapter = new NewestDataAdapter();
-        mRecyclerView.setAdapter(adapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.setList(lotteryEntities);
     }
 }

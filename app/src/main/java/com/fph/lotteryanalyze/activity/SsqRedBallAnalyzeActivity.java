@@ -2,23 +2,11 @@ package com.fph.lotteryanalyze.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.SparseArray;
 
-import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.adapter.AnalyzeHistoryAdapter;
-import com.fph.lotteryanalyze.bean.FrequencyBean;
-import com.fph.lotteryanalyze.db.LotteryDaoUtils;
-import com.fph.lotteryanalyze.db.LotteryEntity;
+import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.utils.AnalyzeUtils;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class SsqRedBallAnalyzeActivity extends BaseActivity {
 
