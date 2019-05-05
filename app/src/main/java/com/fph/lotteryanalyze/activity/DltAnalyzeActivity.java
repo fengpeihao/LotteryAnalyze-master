@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.feilu.kotlindemo.base.BaseActivity;
+import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.adapter.AnalyzeAdapter;
 import com.fph.lotteryanalyze.adapter.NewestDataAdapter;

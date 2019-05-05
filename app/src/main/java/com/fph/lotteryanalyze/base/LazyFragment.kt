@@ -1,8 +1,8 @@
-package com.fph.headlinekotlin.base
+package com.fph.lotteryanalyze.base
 
 import android.os.Bundle
 import android.view.View
-import com.feilu.kotlindemo.base.BaseFragment
+import com.fph.lotteryanalyze.base.BaseFragment
 
 /**
  * Created by fengpeihao on 2018/1/22.

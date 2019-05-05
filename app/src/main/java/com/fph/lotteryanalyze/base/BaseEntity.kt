@@ -1,4 +1,4 @@
-package com.fph.headlinekotlin.base
+package com.fph.lotteryanalyze.base
 
 /**
  * Created by fengpeihao on 2018/1/8.

@@ -7,7 +7,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.TextView;
 
-import com.feilu.kotlindemo.base.BaseActivity;
+import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.adapter.AnalyzeHistoryAdapter;
 import com.fph.lotteryanalyze.bean.FrequencyBean;

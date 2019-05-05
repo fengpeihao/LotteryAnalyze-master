@@ -1,4 +1,4 @@
-package com.feilu.kotlindemo.base
+package com.fph.lotteryanalyze.base
 
 import com.trello.rxlifecycle2.android.ActivityEvent
 import com.trello.rxlifecycle2.android.FragmentEvent

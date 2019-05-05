@@ -1,4 +1,4 @@
-package com.feilu.kotlindemo.base
+package com.fph.lotteryanalyze.base
 
 import io.reactivex.subscribers.ResourceSubscriber
 

@@ -1,4 +1,4 @@
-package com.feilu.kotlindemo.base
+package com.fph.lotteryanalyze.base
 
 import android.content.Intent
 import android.os.Bundle

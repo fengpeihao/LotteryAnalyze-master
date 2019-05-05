@@ -1,17 +1,41 @@
 package com.fph.lotteryanalyze.activity;
 
-import com.feilu.kotlindemo.base.BaseActivity;
+import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.utils.NumberUtils;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+
 public class OmitLimitActivity extends BaseActivity {
 
-    private EditText mEdtInput;
+    @BindView(R.id.view_pager)
+    ViewPager mViewPager;
+    @BindView(R.id.tab_layout)
+    TabLayout mTabLayout;
+    @BindView(R.id.edt_input)
+    EditText mEdtInput;
+    @BindView(R.id.btn_confirm)
+    Button mBtnConfirm;
+    private String[] mTitles = {"红球", "蓝球"};
+    private String[] mTypes = {"red", "blue"};
+    private List<OmitFragment> mList = new ArrayList<>();
+    private int mCurrentPosition;
 
     @Override
     protected int getLayoutId() {
@@ -20,19 +44,38 @@ public class OmitLimitActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        mEdtInput = findViewById(R.id.edt_input);
-        int limit = NumberUtils.getInteger(mEdtInput.getText().toString());
-        Button btnConfirm = findViewById(R.id.btn_confirm);
-        final OmitFragment omitFragment = OmitFragment.getInstace(limit);
-        FragmentManager supportFragmentManager = getSupportFragmentManager();
-        supportFragmentManager.beginTransaction().add(R.id.frame_layout,omitFragment).show(omitFragment).commit();
-
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
+        mTabLayout.setupWithViewPager(mViewPager);
+        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
-            public void onClick(View view) {
-                int limit = NumberUtils.getInteger(mEdtInput.getText().toString());
-                omitFragment.refreshData(limit);
+            public Fragment getItem(int i) {
+                OmitFragment omitFragment = OmitFragment.getInstance(0, mTypes[i]);
+                mList.add(omitFragment);
+                return omitFragment;
+            }
+
+            @Override
+            public int getCount() {
+                return mTitles.length;
+            }
+
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return mTitles[position];
             }
         });
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                mCurrentPosition = position;
+            }
+        });
+    }
+
+    @OnClick(R.id.btn_confirm)
+    public void onBtnConfirmClicked() {
+        int limit = NumberUtils.getInteger(mEdtInput.getText().toString());
+        mList.get(mCurrentPosition).refreshData(limit);
     }
 }

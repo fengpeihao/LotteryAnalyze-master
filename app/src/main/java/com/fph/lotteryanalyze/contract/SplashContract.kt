@@ -1,8 +1,8 @@
 package com.fph.lotteryanalyze.contract
 
-import com.feilu.kotlindemo.base.BaseModel
-import com.feilu.kotlindemo.base.BasePresenter
-import com.feilu.kotlindemo.base.BaseView
+import com.fph.lotteryanalyze.base.BaseModel
+import com.fph.lotteryanalyze.base.BasePresenter
+import com.fph.lotteryanalyze.base.BaseView
 import com.fph.lotteryanalyze.activity.SplashActivity
 import com.fph.lotteryanalyze.model.SplashModel
 

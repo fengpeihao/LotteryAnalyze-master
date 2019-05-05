@@ -1,4 +1,4 @@
-package com.feilu.kotlindemo.base
+package com.fph.lotteryanalyze.base
 
 import com.fph.lotteryanalyze.api.ApiModel
 import com.fph.lotteryanalyze.api.ApiService

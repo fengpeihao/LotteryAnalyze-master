@@ -1,4 +1,4 @@
-package com.feilu.kotlindemo.base
+package com.fph.lotteryanalyze.base
 
 /**
  * Created by fengpeihao on 2017/7/22.

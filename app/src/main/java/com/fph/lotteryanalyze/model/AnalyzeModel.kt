@@ -1,7 +1,7 @@
 package com.fph.lotteryanalyze.model
 
-import com.feilu.kotlindemo.base.Common2Subscriber
-import com.feilu.kotlindemo.base.RxUtils
+import com.fph.lotteryanalyze.base.Common2Subscriber
+import com.fph.lotteryanalyze.base.RxUtils
 import com.fph.lotteryanalyze.api.UrlContants
 import com.fph.lotteryanalyze.bean.LotteryBean
 import com.fph.lotteryanalyze.contract.AnalyzeContract

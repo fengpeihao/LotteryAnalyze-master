@@ -2,9 +2,10 @@ package com.fph.lotteryanalyze.activity;
 
 import org.jetbrains.annotations.Nullable;
 
-import com.feilu.kotlindemo.base.BaseFragment;
+import com.fph.lotteryanalyze.base.BaseFragment;
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.adapter.OmitAdapter;
+import com.fph.lotteryanalyze.base.LazyFragment;
 import com.fph.lotteryanalyze.utils.AnalyzeUtils;
 
 import android.os.Bundle;
@@ -14,37 +15,46 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 
-public class OmitFragment extends BaseFragment {
+public class OmitFragment extends LazyFragment {
 
     @BindView(R.id.text_number)
     TextView mTextNumber;
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
     private OmitAdapter mAdapter;
+    private String mType = "red";
+    private int mLimit;
 
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_omit;
     }
 
-    public static OmitFragment getInstace(int limit){
+    public static OmitFragment getInstance(int limit, String type) {
         OmitFragment omitFragment = new OmitFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("limit",limit);
+        bundle.putInt("limit", limit);
+        bundle.putString("type", type);
         omitFragment.setArguments(bundle);
         return omitFragment;
     }
 
     @Override
     protected void init(@Nullable Bundle savedInstanceState) {
-        int limit = getArguments().getInt("limit", 0);
-        mAdapter = new OmitAdapter("red");
+        mLimit = getArguments().getInt("limit", 0);
+        mType = getArguments().getString("type");
+        mAdapter = new OmitAdapter(mType);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter.setList(new AnalyzeUtils("red").getSsqRedAnalyze(getContext(),limit));
+
     }
 
-    public void refreshData(int limit){
-        mAdapter.setList(new AnalyzeUtils("red").getSsqRedAnalyze(getContext(),limit));
+    public void refreshData(int limit) {
+        mAdapter.setList(new AnalyzeUtils(mType).getSsqRedAnalyze(getContext(), limit));
+    }
+
+    @Override
+    public void lazyInit() {
+        mAdapter.setList(new AnalyzeUtils(mType).getSsqRedAnalyze(getContext(), mLimit));
     }
 }

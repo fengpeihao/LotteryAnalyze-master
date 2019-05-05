@@ -6,8 +6,8 @@ import android.os.Handler
 import android.os.Message
 import android.text.TextUtils
 import android.widget.Toast
-import com.feilu.kotlindemo.base.Common2Subscriber
-import com.feilu.kotlindemo.base.RxUtils
+import com.fph.lotteryanalyze.base.Common2Subscriber
+import com.fph.lotteryanalyze.base.RxUtils
 import com.fph.lotteryanalyze.activity.SplashActivity
 import com.fph.lotteryanalyze.api.ApiModel
 import com.fph.lotteryanalyze.api.UrlContants

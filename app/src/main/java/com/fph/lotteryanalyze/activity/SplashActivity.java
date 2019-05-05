@@ -7,7 +7,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 
-import com.feilu.kotlindemo.base.BaseActivity;
+import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.contract.SplashContract;
 import com.fph.lotteryanalyze.presenter.SplashPresenter;

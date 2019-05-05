@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.feilu.kotlindemo.base.BaseActivity;
+import com.fph.lotteryanalyze.base.BaseActivity;
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.adapter.NewestDataAdapter;
 import com.fph.lotteryanalyze.db.LotteryDaoUtils;

@@ -1,9 +1,9 @@
 package com.fph.lotteryanalyze.contract
 
-import com.feilu.kotlindemo.base.BaseModel
-import com.feilu.kotlindemo.base.BasePresenter
-import com.feilu.kotlindemo.base.BaseView
-import com.feilu.kotlindemo.base.Common2Subscriber
+import com.fph.lotteryanalyze.base.BaseModel
+import com.fph.lotteryanalyze.base.BasePresenter
+import com.fph.lotteryanalyze.base.BaseView
+import com.fph.lotteryanalyze.base.Common2Subscriber
 import com.fph.lotteryanalyze.bean.LotteryBean
 import com.fph.lotteryanalyze.db.LotteryEntity
 import com.fph.lotteryanalyze.model.AnalyzeModel
