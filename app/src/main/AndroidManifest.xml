@@ -27,11 +27,11 @@
         </activity>
         <activity android:name=".activity.AnalyzeActivity" />
         <activity android:name=".activity.DltAnalyzeActivity" />
-        <activity android:name=".activity.SsqBlueBallAnalyzeActivity" />
         <activity android:name=".activity.DataListActivity" />
-        <activity android:name=".activity.SsqRedBallAnalyzeActivity" />
+        <activity android:name=".activity.SsqAnalyzeActivity" />
         <activity android:name=".activity.OmitActivity" />
         <activity android:name=".activity.OmitLimitActivity" />
+        <activity android:name=".activity.VerifyActivity" />
     </application>
 
 </manifest>

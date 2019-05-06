@@ -46,14 +46,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btn_ssq_blue_ball_analyze.setOnClickListener {
-            val intent = Intent(this, SsqBlueBallAnalyzeActivity::class.java)
-            intent.putExtra("type", "ssq")
-            startActivity(intent)
-        }
-
-        btn_ssq_red_ball_analyze.setOnClickListener {
-            val intent = Intent(this, SsqRedBallAnalyzeActivity::class.java)
+        btn_ssq_analyze.setOnClickListener {
+            val intent = Intent(this, SsqAnalyzeActivity::class.java)
             intent.putExtra("type", "ssq")
             startActivity(intent)
         }
@@ -71,6 +65,12 @@ class MainActivity : AppCompatActivity() {
 
         btn_ssq_limit_omit.setOnClickListener {
             val intent = Intent(this, OmitLimitActivity::class.java)
+            intent.putExtra("type", "ssq")
+            startActivity(intent)
+        }
+
+        btn_ssq_verify.setOnClickListener {
+            val intent = Intent(this, VerifyActivity::class.java)
             intent.putExtra("type", "ssq")
             startActivity(intent)
         }

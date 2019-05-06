@@ -49,11 +49,11 @@ public class OmitFragment extends LazyFragment {
     }
 
     public void refreshData(int limit) {
-        mAdapter.setList(new AnalyzeUtils(mType).getSsqRedAnalyze(getContext(), limit));
+        mAdapter.setList(new AnalyzeUtils(mType).getSsqAnalyzeData(getContext(), limit));
     }
 
     @Override
     public void lazyInit() {
-        mAdapter.setList(new AnalyzeUtils(mType).getSsqRedAnalyze(getContext(), mLimit));
+        mAdapter.setList(new AnalyzeUtils(mType).getSsqAnalyzeData(getContext(), mLimit));
     }
 }

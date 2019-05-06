@@ -27,18 +27,11 @@
         android:text="历史数据" />
 
     <Button
-        android:id="@+id/btn_ssq_blue_ball_analyze"
+        android:id="@+id/btn_ssq_analyze"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_20"
-        android:text="双色球蓝球历史数据分析" />
-
-    <Button
-        android:id="@+id/btn_ssq_red_ball_analyze"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_20"
-        android:text="双色球红球球历史数据分析" />
+        android:text="双色球历史数据分析" />
 
     <Button
         android:id="@+id/btn_ssq_omit"
@@ -53,4 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_20"
         android:text="双色球历史遗漏数据分析" />
+
+    <Button
+        android:id="@+id/btn_ssq_verify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="双色球数据猜测对比" />
 </LinearLayout>

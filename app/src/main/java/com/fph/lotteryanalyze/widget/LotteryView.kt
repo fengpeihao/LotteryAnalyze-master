@@ -80,7 +80,7 @@ class LotteryView : View {
         var width = MeasureSpec.getSize(widthMeasureSpec)
         var height = MeasureSpec.getSize(heightMeasureSpec)
         if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.AT_MOST) {
-            width = (circleRadius * data.length * 2 + padding * (data.length - 1) + offset * 2).toInt()
+            width = (circleRadius * 7 * 2 + padding * 6 + offset * 2).toInt()
         }
         if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.AT_MOST) {
             height = (circleRadius * 2 + offset * 2).toInt()
