@@ -1,11 +1,9 @@
 package com.fph.lotteryanalyze.utils;
 
 import android.content.Context;
-import android.util.Log;
 import android.util.SparseArray;
 
 import com.fph.lotteryanalyze.bean.FrequencyBean;
-import com.fph.lotteryanalyze.bean.VerifyBean;
 import com.fph.lotteryanalyze.db.BallDaoUtils;
 import com.fph.lotteryanalyze.db.BallEntity;
 import com.fph.lotteryanalyze.db.LotteryDaoUtils;

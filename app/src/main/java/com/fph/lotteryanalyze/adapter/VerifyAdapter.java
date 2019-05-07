@@ -8,9 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fph.lotteryanalyze.R;
-import com.fph.lotteryanalyze.bean.VerifyBean;
+import com.fph.lotteryanalyze.db.BallEntity;
+import com.fph.lotteryanalyze.db.OmitEntity;
 import com.fph.lotteryanalyze.widget.LotteryView;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -18,9 +21,9 @@ import butterknife.ButterKnife;
 
 public class VerifyAdapter extends RecyclerView.Adapter<VerifyAdapter.ViewHolder> {
 
-    private List<VerifyBean> mList;
+    private List<OmitEntity> mList;
 
-    public void setList(List<VerifyBean> list) {
+    public void setList(List<OmitEntity> list) {
         mList = list;
         notifyDataSetChanged();
     }
@@ -34,10 +37,30 @@ public class VerifyAdapter extends RecyclerView.Adapter<VerifyAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        VerifyBean verifyBean = mList.get(i);
-        viewHolder.mTvDate.setText(verifyBean.getExpect());
-        viewHolder.mLotteryView.setData(verifyBean.getOpencode());
-//        viewHolder.mTvBeforehand.setText(verifyBean.getBeforehandCode());
+        OmitEntity omitEntity = mList.get(i);
+        viewHolder.mTvDate.setText(omitEntity.getExpect());
+        viewHolder.mLotteryView.setData(omitEntity.getOpencode());
+        List<BallEntity> ballEntities = omitEntity.getBallEntities();
+        Collections.sort(ballEntities, new Comparator<BallEntity>() {
+            @Override
+            public int compare(BallEntity o1, BallEntity o2) {
+                return (o2.getBeforehandFrequency() + o2.getAnaplerosisFrequency()).compareTo(o1.getBeforehandFrequency() + o1.getAnaplerosisFrequency());
+            }
+        });
+        StringBuilder builder = new StringBuilder();
+        for (int j = 0; j < ballEntities.size(); j++) {
+            if("red".equals(ballEntities.get(0).getColorType())){
+                if(j>=6){
+                    break;
+                }
+            }else{
+                if(j>=1){
+                    break;
+                }
+            }
+            builder.append(ballEntities.get(j).getNumber()).append(",");
+        }
+        viewHolder.mTvBeforehand.setText(builder.substring(0, builder.length() - 1));
     }
 
     @Override

@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_10"
-        android:text="03,04,06,12,16,22"
+        android:text=""
         app:layout_constraintLeft_toRightOf="@id/text_beforehand"
         app:layout_constraintTop_toBottomOf="@id/text_beforehand"
         app:layout_constraintTop_toTopOf="@id/text_beforehand" />
@@ -64,7 +64,7 @@
         android:id="@+id/tv_hit_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="80%"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="@id/text_opencode"
         app:layout_constraintLeft_toRightOf="@id/text_hit_rate"
         app:layout_constraintTop_toTopOf="@id/text_opencode" />
