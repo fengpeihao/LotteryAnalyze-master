@@ -16,27 +16,11 @@ public class VerifyBean {
     private BigDecimal[] probabilityList;
 
     public String getBeforehandCode() {
-        StringBuilder beforehand = new StringBuilder();
-        ArrayList<BigDecimal> list = new ArrayList<>(Arrays.asList(probabilityList));
-        Collections.sort(list/*, new Comparator<BigDecimal>() {
-            @Override
-            public int compare(BigDecimal o1, BigDecimal o2) {
-                return o1.compareTo(o2);
-            }
-        }*/);
-        for (int i = 0; i < list.size(); i++) {
-            if ("blue".equals(type)) {
-                if (i >= 1) {
-                    break;
-                }
-            } else {
-                if (i >= 6) {
-                    break;
-                }
-            }
-            beforehand.append(list.get(i)).append(",");
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < probabilityList.length; i++) {
+            builder.append(probabilityList[i].setScale(3, BigDecimal.ROUND_HALF_UP).toString()).append(",");
         }
-        return beforehand.subSequence(0, beforehand.length() - 1).toString();
+        return builder.subSequence(0, builder.length() - 1).toString();
     }
 
     public String getType() {

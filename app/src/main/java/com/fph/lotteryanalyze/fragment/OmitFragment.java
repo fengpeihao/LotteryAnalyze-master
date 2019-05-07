@@ -23,6 +23,7 @@ public class OmitFragment extends LazyFragment {
     private OmitAdapter mAdapter;
     private String mType = "red";
     private int mLimit;
+    private AnalyzeUtils mAnalyzeUtils;
 
     @Override
     protected int getLayoutId() {
@@ -49,11 +50,17 @@ public class OmitFragment extends LazyFragment {
     }
 
     public void refreshData(int limit) {
-        mAdapter.setList(new AnalyzeUtils(mType).getSsqAnalyzeData(getContext(), limit));
+        if (mAnalyzeUtils == null) {
+            mAnalyzeUtils = new AnalyzeUtils(mType, getContext());
+        }
+        mAdapter.setList(mAnalyzeUtils.getSsqAnalyzeData(limit));
     }
 
     @Override
     public void lazyInit() {
-        mAdapter.setList(new AnalyzeUtils(mType).getSsqAnalyzeData(getContext(), mLimit));
+        if (mAnalyzeUtils == null) {
+            mAnalyzeUtils = new AnalyzeUtils(mType, getContext());
+        }
+        mAdapter.setList(mAnalyzeUtils.getSsqAnalyzeData(mLimit));
     }
 }

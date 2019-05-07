@@ -167,4 +167,13 @@ public class LotteryDaoUtils {
         }
         return "";
     }
+
+    public String queryMaxExpect() {
+        QueryBuilder<LotteryEntity> queryBuilder = mManager.getDaoSession().queryBuilder(LotteryEntity.class);
+        List<LotteryEntity> list = queryBuilder.orderDesc(LotteryEntityDao.Properties.Expect).list();
+        if (list != null && list.size() > 0) {
+            return list.get(0).getExpect();
+        }
+        return "";
+    }
 }

@@ -36,7 +36,7 @@
         android:id="@+id/text_opencode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_6"
+        android:layout_marginTop="@dimen/dp_10"
         android:text="实出号码"
         app:layout_constraintLeft_toLeftOf="@id/tv_date"
         app:layout_constraintTop_toBottomOf="@id/text_beforehand" />
@@ -55,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="命中率"
+        android:layout_marginLeft="@dimen/dp_10"
         app:layout_constraintBottom_toBottomOf="@id/text_opencode"
         app:layout_constraintLeft_toRightOf="@id/lottery_view"
         app:layout_constraintTop_toTopOf="@id/text_opencode" />

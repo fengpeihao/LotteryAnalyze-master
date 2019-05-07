@@ -133,6 +133,9 @@ public class FrequencyBean {
      * @return 平均遗漏
      */
     public BigDecimal getAveOmitCount() {
+        if (omitPeriods.size() == 0) {
+            return new BigDecimal(0);
+        }
         return BigDecimal.valueOf(totalOmitCount * 1f / omitPeriods.size());
     }
 
@@ -142,6 +145,9 @@ public class FrequencyBean {
      * @return 出现频率
      */
     public BigDecimal getAriseFrequency() {
+        if (totalOmitCount + totalCount == 0) {
+            return new BigDecimal(0);
+        }
         return BigDecimal.valueOf(totalCount * 1f / (totalOmitCount + totalCount));
     }
 
@@ -151,15 +157,19 @@ public class FrequencyBean {
      * @return 预出几率
      */
     public BigDecimal getBeforehandFrequency() {
+        if (getAveOmitCount().doubleValue() == 0) {
+            return new BigDecimal(0);
+        }
         return BigDecimal.valueOf(currentOmit * 1f / getAveOmitCount().doubleValue());
     }
 
     /**
      * 回补几率
+     *
      * @return
      */
     public BigDecimal getAnaplerosisFrequency() {
-        return BigDecimal.valueOf((currentOmit - getOmitPeriods().get(getOmitPeriods().size() - 2)) / 5.5f);
+        return BigDecimal.valueOf((currentOmit - (getOmitPeriods().size() < 2 ? 0 : getOmitPeriods().get(getOmitPeriods().size() - 2))) / 5.5f);
     }
 
     public int getTotalOmitCount() {

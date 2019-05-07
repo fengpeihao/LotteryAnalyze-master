@@ -19,6 +19,7 @@ public class SsqAnalyzeFragment extends LazyFragment {
     RecyclerView mRecyclerView;
     private AnalyzeHistoryAdapter mAdapter;
     private String mType;
+    private AnalyzeUtils mAnalyzeUtils;
 
     public static SsqAnalyzeFragment getInstance(String type) {
         SsqAnalyzeFragment sssqAnalyzeFragment = new SsqAnalyzeFragment();
@@ -30,7 +31,10 @@ public class SsqAnalyzeFragment extends LazyFragment {
 
     @Override
     public void lazyInit() {
-        mAdapter.setList(new AnalyzeUtils(mType).getSsqAnalyzeData(getContext(), 0));
+        if (mAnalyzeUtils == null) {
+            mAnalyzeUtils = new AnalyzeUtils(mType, getContext());
+        }
+        mAdapter.setList(mAnalyzeUtils.getSsqAnalyzeData(0));
     }
 
     @Override

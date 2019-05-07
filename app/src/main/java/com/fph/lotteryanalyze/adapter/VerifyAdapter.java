@@ -37,7 +37,7 @@ public class VerifyAdapter extends RecyclerView.Adapter<VerifyAdapter.ViewHolder
         VerifyBean verifyBean = mList.get(i);
         viewHolder.mTvDate.setText(verifyBean.getExpect());
         viewHolder.mLotteryView.setData(verifyBean.getOpencode());
-        viewHolder.mTvBeforehand.setText(verifyBean.getBeforehandCode());
+//        viewHolder.mTvBeforehand.setText(verifyBean.getBeforehandCode());
     }
 
     @Override

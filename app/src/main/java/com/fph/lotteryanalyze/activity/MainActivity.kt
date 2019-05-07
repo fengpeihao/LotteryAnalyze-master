@@ -1,36 +1,19 @@
 package com.fph.lotteryanalyze.activity
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Environment
-import android.os.Handler
-import android.os.Message
 import android.support.v7.app.AppCompatActivity
+import android.text.TextUtils
 import com.fph.lotteryanalyze.R
-import com.fph.lotteryanalyze.api.UrlContants
 import com.fph.lotteryanalyze.db.LotteryDaoUtils
-import com.fph.lotteryanalyze.db.LotteryEntity
+import com.fph.lotteryanalyze.db.OmitDaoUtils
+import com.fph.lotteryanalyze.utils.AnalyzeUtils
 import com.fph.lotteryanalyze.widget.LoadingDialog
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
-import java.io.File
-import java.io.FileWriter
 
 class MainActivity : AppCompatActivity() {
 
     private var loadingDialog: LoadingDialog? = null
-    private val list = ArrayList<LotteryEntity>()
-    private val mHandler = @SuppressLint("HandlerLeak")
-    object : Handler() {
-        override fun handleMessage(msg: Message?) {
-            super.handleMessage(msg)
-            when (msg?.what) {
-                1 -> cancelLoading()
-            }
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,81 +57,27 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("type", "ssq")
             startActivity(intent)
         }
+        getData()
     }
 
     fun getData() {
-        showLoading()
         Thread {
             kotlin.run {
-                getLotteryData()
-            }
-        }.start()
-
-    }
-
-    fun getLotteryData() {
-        parse(2018)
-        LotteryDaoUtils(this).insertMultLottery(list)
-        outPut(list)
-    }
-
-    fun parse(year: Int) {
-        if (year < 2003) return
-        val url = UrlContants.SSQDataUrl + year + ".html"
-        val connect = Jsoup.connect(url)
-        var document: Document? = null
-        try {
-            document = connect.get()
-        } catch (e: Exception) {
-
-        }
-        if (document == null) return
-        val table_ssq = document.getElementById("table_ssq")
-        val trs = table_ssq.getElementsByTag("tr")
-        for (item in trs) {
-            val tds = item.getElementsByTag("td")
-            val stringBuilder = StringBuilder()
-            val lotteryEntity = LotteryEntity()
-            for (td in tds) {
-                if (td.className().contains("qh7")) {
-                    val dateElement = td.getElementsByTag("a")
-                    val dateStr = dateElement[0].attr("title")
-                    val qihao = dateElement[0].text()
-                    lotteryEntity.expect = qihao
-                    lotteryEntity.opentime = dateStr.substring(5)
-                    continue
-                } else if (td.className().contains("redqiu")) {
-                    if (stringBuilder.length != 0) stringBuilder.append(",")
-                    stringBuilder.append(td.text())
-                } else if (td.className().contains("blueqiu")) {
-                    stringBuilder.append("+").append(td.text())
+                val maxExpect = OmitDaoUtils(this@MainActivity).queryMaxExpect()
+                var openTime = "15001"
+                if (!TextUtils.isEmpty(maxExpect)) {
+                    openTime = maxExpect
+                }
+                val expect = LotteryDaoUtils(this@MainActivity).queryMaxExpect()
+                val analyzeUtils = AnalyzeUtils("red", this@MainActivity)
+                if (getLimit(openTime, expect) == 0) {
+                    return@run
+                }
+                for (i in 0..getLimit(openTime, expect)) {
+                    analyzeUtils.getSsqVerifyData(i)
                 }
             }
-            lotteryEntity.opencode = stringBuilder.toString()
-            list.add(lotteryEntity)
-        }
-        if (year > 2003) {
-            parse(year - 1)
-        }
-    }
-
-    fun outPut(list: ArrayList<LotteryEntity>) {
-        val path = Environment.getExternalStorageDirectory().absolutePath + "/lottery/ssq.txt"
-        val file = File(path)
-        if (!file.parentFile.exists()) {
-            file.parentFile.mkdirs()
-        }
-        if (file.exists()) {
-            file.delete()
-        }
-        val fileWriter = FileWriter(file, true)
-        for (item in list) {
-            val text = "开奖日期:" + item.opentime + " 开奖期号:" + item.expect + " 开奖号码:" + item.opencode + "\r\n"
-            fileWriter.write(text)
-        }
-        fileWriter.flush()
-        fileWriter.close()
-        mHandler.sendEmptyMessage(1)
+        }.start()
     }
 
     fun showLoading() {
@@ -159,5 +88,17 @@ class MainActivity : AppCompatActivity() {
 
     fun cancelLoading() {
         loadingDialog?.cancelDialog()
+    }
+
+    fun getLimit(preTime: String, currentTime: String): Int {
+        var limit = 200;
+        val preYear = preTime.substring(0, 2)
+        val prePeriods = preTime.substring(2, preTime.length)
+        val currentYear = currentTime.substring(0, 2)
+        val currentPeriods = currentTime.substring(2, preTime.length)
+        if (preYear == currentYear) {
+            limit = currentPeriods.toInt() - prePeriods.toInt()
+        }
+        return limit
     }
 }
