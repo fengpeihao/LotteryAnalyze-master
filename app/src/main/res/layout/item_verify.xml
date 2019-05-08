@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/dp_5"
         android:paddingBottom="@dimen/dp_5"
-        android:text="下期预出号码分析"
+        android:text="预出号码"
         app:layout_constraintLeft_toLeftOf="@id/tv_date"
         app:layout_constraintTop_toBottomOf="@id/tv_date" />
 

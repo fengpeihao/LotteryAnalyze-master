@@ -160,7 +160,9 @@ public class AnalyzeUtils {
         OmitEntity omitEntity = new OmitEntity();
         omitEntity.setExpect(lotteryEntity.getExpect());
         omitEntity.setBallType("ssq");
-        omitEntity.setOpencode(lotteryEntity.getOpencode());
+        if (mLotteryEntities.size() > mLotteryEntities.size() - limit) {
+            omitEntity.setOpencode( mLotteryEntities.get(mLotteryEntities.size() - limit).getOpencode());
+        }
         omitEntity.setOpentime(lotteryEntity.getOpentime());
         if (mOmitDaoUtils == null) {
             mOmitDaoUtils = new OmitDaoUtils(mContext);
