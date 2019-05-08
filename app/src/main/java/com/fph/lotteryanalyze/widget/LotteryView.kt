@@ -41,7 +41,7 @@ class LotteryView : View {
 
     fun setData(data: String) {
         this.data = data
-        postInvalidate()
+        invalidate()
     }
 
     override fun onDraw(canvas: Canvas?) {

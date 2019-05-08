@@ -1,6 +1,7 @@
 package com.fph.lotteryanalyze.adapter;
 
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,12 @@ public class VerifyAdapter extends RecyclerView.Adapter<VerifyAdapter.ViewHolder
                 return (o2.getBeforehandFrequency() + o2.getAnaplerosisFrequency()).compareTo(o1.getBeforehandFrequency() + o1.getAnaplerosisFrequency());
             }
         });
+        String colorType = ballEntities.get(0).getColorType();
+        if ("red".equals(colorType)) {
+            viewHolder.mTvBeforehand.setTextColor(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(),android.R.color.holo_red_light));
+        }else{
+            viewHolder.mTvBeforehand.setTextColor(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(),android.R.color.holo_blue_light));
+        }
         StringBuilder builder = new StringBuilder();
         for (int j = 0; j < ballEntities.size(); j++) {
             if("red".equals(ballEntities.get(0).getColorType())){
