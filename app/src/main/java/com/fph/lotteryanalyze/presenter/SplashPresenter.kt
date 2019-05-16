@@ -128,7 +128,7 @@ class SplashPresenter : SplashContract.Presenter {
         parse(format.toInt())
         LotteryDaoUtils(mView).insertMultLottery(list)
         mHandler.sendEmptyMessage(1)
-//        outPut(list)
+        outPut(list)
     }
 
     private fun parse(year: Int) {

@@ -3,7 +3,10 @@ package com.fph.lotteryanalyze.adapter;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +44,7 @@ public class VerifyAdapter extends RecyclerView.Adapter<VerifyAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         OmitEntity omitEntity = mList.get(i);
         viewHolder.mTvDate.setText(omitEntity.getExpect());
-        if(!TextUtils.isEmpty(omitEntity.getOpencode())) {
+        if (!TextUtils.isEmpty(omitEntity.getOpencode())) {
             viewHolder.mLotteryView.setData(omitEntity.getOpencode());
         }
         List<BallEntity> ballEntities = omitEntity.getBallEntities();
@@ -53,24 +56,50 @@ public class VerifyAdapter extends RecyclerView.Adapter<VerifyAdapter.ViewHolder
         });
         String colorType = ballEntities.get(0).getColorType();
         if ("red".equals(colorType)) {
-            viewHolder.mTvBeforehand.setTextColor(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(),android.R.color.holo_red_light));
-        }else{
-            viewHolder.mTvBeforehand.setTextColor(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(),android.R.color.holo_blue_light));
+            viewHolder.mTvBeforehand.setTextColor(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(), android.R.color.holo_red_light));
+        } else {
+            viewHolder.mTvBeforehand.setTextColor(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(), android.R.color.holo_blue_light));
         }
         StringBuilder builder = new StringBuilder();
         for (int j = 0; j < ballEntities.size(); j++) {
-            if("red".equals(ballEntities.get(0).getColorType())){
-                if(j>=6){
+            if ("red".equals(colorType)) {
+                if (j >= 6) {
                     break;
                 }
-            }else{
-                if(j>=1){
+            } else {
+                if (j >= 1) {
                     break;
                 }
             }
             builder.append(ballEntities.get(j).getNumber()).append(",");
         }
-        viewHolder.mTvBeforehand.setText(builder.substring(0, builder.length() - 1));
+        String beforehand = builder.substring(0, builder.length() - 1);
+        if (TextUtils.isEmpty(omitEntity.getOpencode())) {
+            viewHolder.mTvBeforehand.setText(beforehand);
+        } else {
+            SpannableString spannableString = new SpannableString(beforehand);
+            String[] split = beforehand.split(",");
+            boolean[] index = new boolean[split.length];
+            String openCode = omitEntity.getOpencode().split("\\+")[0];
+            if ("blue".equals(colorType)) {
+                openCode = omitEntity.getOpencode().split("\\+")[1];
+            }
+            for (int j = 0; j < split.length -1; j++) {
+                if (openCode.contains(split[j])) {
+                    index[j] = true;
+                } else {
+                    index[j] = false;
+                }
+            }
+            for (int k = 0; k < index.length; k++) {
+                if (index[k]) {
+                    spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(), android.R.color.holo_red_light)), Math.max(k * 3 - 1, 0), k * 3 + 2, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                }else{
+                    spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(viewHolder.mTvBeforehand.getContext(), android.R.color.black)), Math.max(k * 3 - 1, 0), k * 3 + 2, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                }
+            }
+            viewHolder.mTvBeforehand.setText(spannableString);
+        }
     }
 
     @Override
