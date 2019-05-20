@@ -63,7 +63,7 @@ public class VerifyAdapter extends RecyclerView.Adapter<VerifyAdapter.ViewHolder
         StringBuilder builder = new StringBuilder();
         for (int j = 0; j < ballEntities.size(); j++) {
             if ("red".equals(colorType)) {
-                if (j >= 6) {
+                if (j >= 10) {
                     break;
                 }
             } else {
