@@ -176,4 +176,20 @@ public class LotteryDaoUtils {
         }
         return "";
     }
+
+    public List<LotteryEntity> ascQueryAllData(){
+        return mManager.getDaoSession().queryBuilder(LotteryEntity.class)
+                .orderAsc(LotteryEntityDao.Properties.Opentime).list();
+    }
+
+    /**
+     * 根据主键expect查询记录
+     *
+     * @param key
+     * @return
+     */
+    public LotteryEntity queryDataByExpect(String key) {
+        return mManager.getDaoSession().queryBuilder(LotteryEntity.class)
+                .where(LotteryEntityDao.Properties.Expect.eq(key)).unique();
+    }
 }

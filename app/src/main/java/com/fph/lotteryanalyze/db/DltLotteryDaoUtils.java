@@ -10,7 +10,7 @@ import java.util.List;
  * Created by fengpeihao on 2018/1/30.
  */
 
-public class DltLotteryDaoUtils {
+public class DltLotteryDaoUtils{
     private static final String TAG = DltLotteryDaoUtils.class.getSimpleName();
     private DaoManager mManager;
 
@@ -168,4 +168,19 @@ public class DltLotteryDaoUtils {
         return "";
     }
 
+    public List<DltLotteryEntity> ascQueryAllData(){
+        return mManager.getDaoSession().queryBuilder(DltLotteryEntity.class)
+                .orderAsc(DltLotteryEntityDao.Properties.Opentime).list();
+    }
+
+    /**
+     * 根据主键expect查询记录
+     *
+     * @param key
+     * @return
+     */
+    public DltLotteryEntity queryDataByExpect(String key) {
+        return mManager.getDaoSession().queryBuilder(DltLotteryEntity.class)
+                .where(DltLotteryEntityDao.Properties.Expect.eq(key)).unique();
+    }
 }

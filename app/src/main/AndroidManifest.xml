@@ -32,6 +32,12 @@
         <activity android:name=".activity.OmitActivity" />
         <activity android:name=".activity.OmitLimitActivity" />
         <activity android:name=".activity.VerifyActivity" />
+        <activity android:name=".activity.ArrangeThreeHistoryActivity" />
+        <activity android:name=".activity.ArrangeThreeAnalyzeActivity" />
+        <activity android:name=".activity.ArrangeThreeAnalyzeListActivity" />
+        <activity android:name=".activity.ETCFHistoryActivity" />
+        <activity android:name=".activity.ETCFAnalyzeActivity" />
+        <activity android:name=".activity.ETCFAnalyzeListActivity" />
     </application>
 
 </manifest>

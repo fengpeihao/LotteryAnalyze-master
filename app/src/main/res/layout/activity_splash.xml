@@ -13,8 +13,9 @@
         app:duration="5000"
         app:showPainter="true"
         app:repeat="REVERSE"
-        app:text="梦想成真"
+        app:text="中中中"
         app:textInCenter="true"
+        app:pathStrokeColor="@android:color/holo_red_light"
         app:paintStrokeColor="@android:color/holo_red_light"
         app:textSize="60sp"/>
 

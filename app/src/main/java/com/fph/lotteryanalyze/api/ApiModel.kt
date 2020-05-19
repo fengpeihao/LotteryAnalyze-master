@@ -22,7 +22,7 @@ object ApiModel {
     private fun creatRetrofit(): Retrofit {
         loseAgreement();
         val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+//        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
 //                .addInterceptor(RequestInterceptor())

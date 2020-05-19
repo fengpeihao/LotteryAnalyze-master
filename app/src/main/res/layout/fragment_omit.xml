@@ -142,6 +142,20 @@
                     android:layout_height="25dp"
                     android:gravity="center"
                     android:background="@color/color_87CEFA"
+                    android:text="连出几率"
+                    android:textColor="@color/color_7B68EE"
+                    android:textSize="@dimen/dp_14" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_4169E1"/>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="25dp"
+                    android:gravity="center"
+                    android:background="@color/color_87CEFA"
                     android:text="预出几率"
                     android:textColor="@color/color_7B68EE"
                     android:textSize="@dimen/dp_14" />

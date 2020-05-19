@@ -35,10 +35,11 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
         public final static Property CurrentOmit = new Property(7, int.class, "currentOmit", false, "CURRENT_OMIT");
         public final static Property PreOmit = new Property(8, int.class, "preOmit", false, "PRE_OMIT");
         public final static Property TotalOmitCount = new Property(9, int.class, "totalOmitCount", false, "TOTAL_OMIT_COUNT");
-        public final static Property BeforehandFrequency = new Property(10, String.class, "beforehandFrequency", false, "BEFOREHAND_FREQUENCY");
+        public final static Property BeforehandFrequency = new Property(10, float.class, "beforehandFrequency", false, "BEFOREHAND_FREQUENCY");
         public final static Property AveOmitCount = new Property(11, String.class, "aveOmitCount", false, "AVE_OMIT_COUNT");
         public final static Property AriseFrequency = new Property(12, String.class, "ariseFrequency", false, "ARISE_FREQUENCY");
-        public final static Property AnaplerosisFrequency = new Property(13, String.class, "anaplerosisFrequency", false, "ANAPLEROSIS_FREQUENCY");
+        public final static Property AnaplerosisFrequency = new Property(13, float.class, "anaplerosisFrequency", false, "ANAPLEROSIS_FREQUENCY");
+        public final static Property ContinuousFrequency = new Property(14, float.class, "continuousFrequency", false, "CONTINUOUS_FREQUENCY");
     }
 
     private Query<BallEntity> omitEntity_BallEntitiesQuery;
@@ -65,10 +66,11 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
                 "\"CURRENT_OMIT\" INTEGER NOT NULL ," + // 7: currentOmit
                 "\"PRE_OMIT\" INTEGER NOT NULL ," + // 8: preOmit
                 "\"TOTAL_OMIT_COUNT\" INTEGER NOT NULL ," + // 9: totalOmitCount
-                "\"BEFOREHAND_FREQUENCY\" TEXT," + // 10: beforehandFrequency
+                "\"BEFOREHAND_FREQUENCY\" REAL NOT NULL ," + // 10: beforehandFrequency
                 "\"AVE_OMIT_COUNT\" TEXT," + // 11: aveOmitCount
                 "\"ARISE_FREQUENCY\" TEXT," + // 12: ariseFrequency
-                "\"ANAPLEROSIS_FREQUENCY\" TEXT);"); // 13: anaplerosisFrequency
+                "\"ANAPLEROSIS_FREQUENCY\" REAL NOT NULL ," + // 13: anaplerosisFrequency
+                "\"CONTINUOUS_FREQUENCY\" REAL NOT NULL );"); // 14: continuousFrequency
     }
 
     /** Drops the underlying database table. */
@@ -106,11 +108,7 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
         stmt.bindLong(8, entity.getCurrentOmit());
         stmt.bindLong(9, entity.getPreOmit());
         stmt.bindLong(10, entity.getTotalOmitCount());
- 
-        String beforehandFrequency = entity.getBeforehandFrequency();
-        if (beforehandFrequency != null) {
-            stmt.bindString(11, beforehandFrequency);
-        }
+        stmt.bindDouble(11, entity.getBeforehandFrequency());
  
         String aveOmitCount = entity.getAveOmitCount();
         if (aveOmitCount != null) {
@@ -121,11 +119,8 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
         if (ariseFrequency != null) {
             stmt.bindString(13, ariseFrequency);
         }
- 
-        String anaplerosisFrequency = entity.getAnaplerosisFrequency();
-        if (anaplerosisFrequency != null) {
-            stmt.bindString(14, anaplerosisFrequency);
-        }
+        stmt.bindDouble(14, entity.getAnaplerosisFrequency());
+        stmt.bindDouble(15, entity.getContinuousFrequency());
     }
 
     @Override
@@ -157,11 +152,7 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
         stmt.bindLong(8, entity.getCurrentOmit());
         stmt.bindLong(9, entity.getPreOmit());
         stmt.bindLong(10, entity.getTotalOmitCount());
- 
-        String beforehandFrequency = entity.getBeforehandFrequency();
-        if (beforehandFrequency != null) {
-            stmt.bindString(11, beforehandFrequency);
-        }
+        stmt.bindDouble(11, entity.getBeforehandFrequency());
  
         String aveOmitCount = entity.getAveOmitCount();
         if (aveOmitCount != null) {
@@ -172,11 +163,8 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
         if (ariseFrequency != null) {
             stmt.bindString(13, ariseFrequency);
         }
- 
-        String anaplerosisFrequency = entity.getAnaplerosisFrequency();
-        if (anaplerosisFrequency != null) {
-            stmt.bindString(14, anaplerosisFrequency);
-        }
+        stmt.bindDouble(14, entity.getAnaplerosisFrequency());
+        stmt.bindDouble(15, entity.getContinuousFrequency());
     }
 
     @Override
@@ -197,10 +185,11 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
             cursor.getInt(offset + 7), // currentOmit
             cursor.getInt(offset + 8), // preOmit
             cursor.getInt(offset + 9), // totalOmitCount
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // beforehandFrequency
+            cursor.getFloat(offset + 10), // beforehandFrequency
             cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11), // aveOmitCount
             cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12), // ariseFrequency
-            cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13) // anaplerosisFrequency
+            cursor.getFloat(offset + 13), // anaplerosisFrequency
+            cursor.getFloat(offset + 14) // continuousFrequency
         );
         return entity;
     }
@@ -217,10 +206,11 @@ public class BallEntityDao extends AbstractDao<BallEntity, Long> {
         entity.setCurrentOmit(cursor.getInt(offset + 7));
         entity.setPreOmit(cursor.getInt(offset + 8));
         entity.setTotalOmitCount(cursor.getInt(offset + 9));
-        entity.setBeforehandFrequency(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setBeforehandFrequency(cursor.getFloat(offset + 10));
         entity.setAveOmitCount(cursor.isNull(offset + 11) ? null : cursor.getString(offset + 11));
         entity.setAriseFrequency(cursor.isNull(offset + 12) ? null : cursor.getString(offset + 12));
-        entity.setAnaplerosisFrequency(cursor.isNull(offset + 13) ? null : cursor.getString(offset + 13));
+        entity.setAnaplerosisFrequency(cursor.getFloat(offset + 13));
+        entity.setContinuousFrequency(cursor.getFloat(offset + 14));
      }
     
     @Override

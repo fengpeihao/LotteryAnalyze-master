@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_peridos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="期数"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_periods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="20050"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/text_peridos"
+        app:layout_constraintTop_toBottomOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/text_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:text="号码"
+        app:layout_constraintLeft_toRightOf="@id/text_peridos"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="@id/text_number"
+        app:layout_constraintTop_toBottomOf="@id/text_number" />
+
+    <TextView
+        android:id="@+id/text_chance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="欲出几率"
+        app:layout_constraintLeft_toRightOf="@id/text_number"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_chance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.8"
+        app:layout_constraintLeft_toLeftOf="@id/text_chance"
+        app:layout_constraintTop_toBottomOf="@id/text_chance" />
+
+    <TextView
+        android:id="@+id/text_covering_chance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="回补几率"
+        app:layout_constraintLeft_toRightOf="@id/text_chance"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_covering_chance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.8"
+        app:layout_constraintLeft_toLeftOf="@id/text_covering_chance"
+        app:layout_constraintTop_toBottomOf="@id/text_covering_chance" />
+
+    <TextView
+        android:id="@+id/text_continuous_chance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="连出几率"
+        app:layout_constraintLeft_toRightOf="@id/text_covering_chance"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_continuous_chance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.8"
+        app:layout_constraintLeft_toLeftOf="@id/text_continuous_chance"
+        app:layout_constraintTop_toBottomOf="@id/text_continuous_chance" />
+
+    <TextView
+        android:id="@+id/text_aggregate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="总计"
+        app:layout_constraintLeft_toRightOf="@id/text_continuous_chance"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_aggregate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.8"
+        app:layout_constraintLeft_toLeftOf="@id/text_aggregate"
+        app:layout_constraintTop_toBottomOf="@id/text_aggregate" />
+
+
+</android.support.constraint.ConstraintLayout>

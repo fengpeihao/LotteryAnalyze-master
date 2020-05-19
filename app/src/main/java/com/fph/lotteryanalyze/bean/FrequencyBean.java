@@ -152,7 +152,7 @@ public class FrequencyBean {
     }
 
     /**
-     * 预出几率
+     * [欲出几率] = [本期遗漏÷平均遗漏]
      *
      * @return 预出几率
      */
@@ -160,16 +160,29 @@ public class FrequencyBean {
         if (getAveOmitCount().doubleValue() == 0) {
             return new BigDecimal(0);
         }
-        return BigDecimal.valueOf(currentOmit * 1f / getAveOmitCount().doubleValue());
+        return BigDecimal.valueOf(currentOmit % getAveOmitCount().floatValue() / getAveOmitCount().floatValue());
     }
 
     /**
-     * 回补几率
+     * [回补几率] = (上期遗漏-本期遗漏)÷循环周期
      *
      * @return
      */
     public BigDecimal getAnaplerosisFrequency() {
-        return BigDecimal.valueOf((currentOmit - (getOmitPeriods().size() < 2 ? 0 : getOmitPeriods().get(getOmitPeriods().size() - 2))) / 5.5f);
+        return BigDecimal.valueOf((((getOmitPeriods().size() < 2 ? 0 : getOmitPeriods().get(getOmitPeriods().size() - 2)) - currentOmit) % getAveOmitCount().floatValue()) / getAveOmitCount().floatValue());
+    }
+
+    /**
+     * 连续出现几率
+     * @return
+     */
+    public BigDecimal getContinuousFrequency() {
+        int count = 0;
+        for (int i = 2; i < continuousCount.size(); i++) {
+
+            count += continuousCount.get(i);
+        }
+        return BigDecimal.valueOf(count * 1f / totalCount);
     }
 
     public int getTotalOmitCount() {

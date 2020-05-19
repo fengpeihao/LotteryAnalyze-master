@@ -1,12 +1,14 @@
 package com.fph.lotteryanalyze.fragment;
 
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.fph.lotteryanalyze.R;
 import com.fph.lotteryanalyze.adapter.VerifyAdapter;
 import com.fph.lotteryanalyze.base.LazyFragment;
+import com.fph.lotteryanalyze.bean.LotteryGuessBean;
 import com.fph.lotteryanalyze.db.OmitDaoUtils;
 import com.fph.lotteryanalyze.db.OmitEntity;
 
@@ -22,7 +24,6 @@ public class VerifyFragment extends LazyFragment {
     RecyclerView mRecyclerView;
     private String mType;
     private VerifyAdapter mAdapter;
-    private OmitDaoUtils mOmitDaoUtils;
 
     public static VerifyFragment getInstance(String type) {
         VerifyFragment verifyFragment = new VerifyFragment();
@@ -34,11 +35,6 @@ public class VerifyFragment extends LazyFragment {
 
     @Override
     public void lazyInit() {
-        if(mOmitDaoUtils==null) {
-            mOmitDaoUtils = new OmitDaoUtils(getContext());
-        }
-        List<OmitEntity> list = mOmitDaoUtils.queryAllData();
-        mAdapter.setList(list);
     }
 
     @Override
@@ -50,7 +46,12 @@ public class VerifyFragment extends LazyFragment {
     protected void init(@Nullable Bundle savedInstanceState) {
         mType = getArguments().getString("type");
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new VerifyAdapter();
+        mAdapter = new VerifyAdapter(mType);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+    }
+
+    public void setData(List<LotteryGuessBean> list){
+        mAdapter.setList(list);
     }
 }

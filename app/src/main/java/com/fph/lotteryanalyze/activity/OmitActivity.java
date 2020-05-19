@@ -28,12 +28,12 @@ public class OmitActivity extends BaseActivity {
 
     @Override
     protected void init() {
+        final String category = getIntent().getStringExtra("category");
         mTabLayout.setupWithViewPager(mViewPager);
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
-                OmitFragment omitFragment = OmitFragment.getInstance(0, mTypes[i]);
-                return omitFragment;
+                return OmitFragment.getInstance(0, mTypes[i],category);
             }
 
             @Override

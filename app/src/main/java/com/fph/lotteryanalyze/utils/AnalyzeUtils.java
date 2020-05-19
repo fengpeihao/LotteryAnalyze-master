@@ -175,9 +175,9 @@ public class AnalyzeUtils {
             ballEntity.setColorType(mType);
             ballEntity.setNumber(frequencyBean.getNumber());
             ballEntity.setAriseFrequency(frequencyBean.getAriseFrequency().setScale(3, BigDecimal.ROUND_HALF_UP).toString());
-            ballEntity.setAnaplerosisFrequency(frequencyBean.getAnaplerosisFrequency().setScale(3, BigDecimal.ROUND_HALF_UP).toString());
+            ballEntity.setAnaplerosisFrequency(frequencyBean.getAnaplerosisFrequency().floatValue());
             ballEntity.setAveOmitCount(frequencyBean.getAveOmitCount().setScale(3, BigDecimal.ROUND_HALF_UP).toString());
-            ballEntity.setBeforehandFrequency(frequencyBean.getBeforehandFrequency().setScale(3, BigDecimal.ROUND_HALF_UP).toString());
+            ballEntity.setBeforehandFrequency(frequencyBean.getBeforehandFrequency().floatValue());
             ballEntity.setCurrentOmit(frequencyBean.getCurrentOmit());
             ballEntity.setMaxContinuous(frequencyBean.getMaxContinuous());
             ballEntity.setPreOmit(frequencyBean.getOmitPeriods().get(frequencyBean.getOmitPeriods().size() - 2));
@@ -185,6 +185,7 @@ public class AnalyzeUtils {
             ballEntity.setTotalOmitCount(frequencyBean.getTotalOmitCount());
             ballEntity.setMaxOmit(frequencyBean.getMaxOmit());
             ballEntity.setTotalOmitCount(frequencyBean.getTotalOmitCount());
+            ballEntity.setContinuousFrequency(frequencyBean.getContinuousFrequency().floatValue());
             list.add(ballEntity);
         }
         if (mBallDaoUtils == null) {

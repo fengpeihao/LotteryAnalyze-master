@@ -45,7 +45,7 @@ public class BallEntity {
     /**
      * 预出几率
      */
-    private String beforehandFrequency;
+    private float beforehandFrequency;
     /**
      * 平均遗漏
      */
@@ -57,12 +57,19 @@ public class BallEntity {
     /**
      * 回补几率
      */
-    private String anaplerosisFrequency;
+    private float anaplerosisFrequency;
 
-    @Generated(hash = 291223371)
-    public BallEntity(Long id, Long idForOmit, String number, String colorType, int totalCount, int maxOmit,
-            int maxContinuous, int currentOmit, int preOmit, int totalOmitCount, String beforehandFrequency,
-            String aveOmitCount, String ariseFrequency, String anaplerosisFrequency) {
+    /**
+     * 连出几率
+     */
+    private float continuousFrequency;
+
+    @Generated(hash = 79858632)
+    public BallEntity(Long id, Long idForOmit, String number, String colorType,
+            int totalCount, int maxOmit, int maxContinuous, int currentOmit,
+            int preOmit, int totalOmitCount, float beforehandFrequency,
+            String aveOmitCount, String ariseFrequency, float anaplerosisFrequency,
+            float continuousFrequency) {
         this.id = id;
         this.idForOmit = idForOmit;
         this.number = number;
@@ -77,12 +84,13 @@ public class BallEntity {
         this.aveOmitCount = aveOmitCount;
         this.ariseFrequency = ariseFrequency;
         this.anaplerosisFrequency = anaplerosisFrequency;
+        this.continuousFrequency = continuousFrequency;
     }
 
     @Generated(hash = 1763894739)
     public BallEntity() {
     }
-
+    
     public Long getId() {
         return this.id;
     }
@@ -163,11 +171,11 @@ public class BallEntity {
         this.totalOmitCount = totalOmitCount;
     }
 
-    public String getBeforehandFrequency() {
+    public float getBeforehandFrequency() {
         return this.beforehandFrequency;
     }
 
-    public void setBeforehandFrequency(String beforehandFrequency) {
+    public void setBeforehandFrequency(float beforehandFrequency) {
         this.beforehandFrequency = beforehandFrequency;
     }
 
@@ -187,13 +195,19 @@ public class BallEntity {
         this.ariseFrequency = ariseFrequency;
     }
 
-    public String getAnaplerosisFrequency() {
+    public float getAnaplerosisFrequency() {
         return this.anaplerosisFrequency;
     }
 
-    public void setAnaplerosisFrequency(String anaplerosisFrequency) {
+    public void setAnaplerosisFrequency(float anaplerosisFrequency) {
         this.anaplerosisFrequency = anaplerosisFrequency;
     }
 
+    public float getContinuousFrequency() {
+        return continuousFrequency;
+    }
 
+    public void setContinuousFrequency(float continuousFrequency) {
+        this.continuousFrequency = continuousFrequency;
+    }
 }

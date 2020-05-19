@@ -8,4 +8,6 @@ object UrlContants {
     val SuperLottoUrl = "http://f.apiplus.net/dlt-5.json"
 
     val SSQDataUrl = "http://tubiao.zhcw.com/tubiao/ssqNew/ssqInc/ssqZongHeFengBuTuAsckj_year="
+
+    val plsDataUrl = "http://www.lottery.gov.cn/historykj/history.jspx?_ltype=pls"
 }

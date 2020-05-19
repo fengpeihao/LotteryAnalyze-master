@@ -5,78 +5,57 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/tv_date"
+        android:id="@+id/text_periods"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dp_10"
-        android:text=""
+        android:text="期数"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_periods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:text="2020001"
+        app:layout_constraintLeft_toRightOf="@id/text_periods"
+        app:layout_constraintTop_toTopOf="@id/text_periods" />
 
     <TextView
         android:id="@+id/text_beforehand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dp_5"
-        android:paddingBottom="@dimen/dp_5"
-        android:text="预出号码"
-        app:layout_constraintLeft_toLeftOf="@id/tv_date"
-        app:layout_constraintTop_toBottomOf="@id/tv_date" />
+        android:text="猜测号码"
+        app:layout_constraintLeft_toLeftOf="@id/text_periods"
+        app:layout_constraintTop_toBottomOf="@id/text_periods" />
 
     <TextView
         android:id="@+id/tv_beforehand"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_10"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@id/text_beforehand"
+        android:layout_marginRight="@dimen/dp_12"
+        android:text="猜测号码"
         app:layout_constraintLeft_toRightOf="@id/text_beforehand"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/text_beforehand" />
 
     <TextView
         android:id="@+id/text_opencode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/dp_5"
-        android:paddingBottom="@dimen/dp_5"
         android:text="实出号码"
-        app:layout_constraintLeft_toLeftOf="@id/tv_date"
-        app:layout_constraintTop_toBottomOf="@id/text_beforehand" />
-
-    <com.fph.lotteryanalyze.widget.LotteryView
-        android:id="@+id/lottery_view"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/text_opencode"
-        app:layout_constraintLeft_toRightOf="@id/text_opencode"
-        app:layout_constraintTop_toTopOf="@id/text_opencode" />
+        app:layout_constraintLeft_toLeftOf="@id/text_periods"
+        app:layout_constraintTop_toBottomOf="@id/tv_beforehand" />
 
     <TextView
-        android:id="@+id/text_hit_rate"
+        android:id="@+id/tv_opencode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dp_10"
-        android:text="命中率"
-        android:visibility="gone"
+        android:text="实出号码"
         app:layout_constraintBottom_toBottomOf="@id/text_opencode"
-        app:layout_constraintLeft_toRightOf="@id/lottery_view"
+        app:layout_constraintLeft_toRightOf="@id/text_opencode"
         app:layout_constraintTop_toTopOf="@id/text_opencode" />
-
-    <TextView
-        android:id="@+id/tv_hit_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/text_opencode"
-        app:layout_constraintLeft_toRightOf="@id/text_hit_rate"
-        app:layout_constraintTop_toTopOf="@id/text_opencode" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="@dimen/dp_6"
-        android:background="#eeeeee"
-        app:layout_constraintTop_toBottomOf="@id/text_opencode" />
 </android.support.constraint.ConstraintLayout>

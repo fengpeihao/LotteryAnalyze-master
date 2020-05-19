@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/text_peridos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="期数"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_periods"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="20050"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/text_peridos"
+        app:layout_constraintTop_toBottomOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/text_guess_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="猜测号码"
+        app:layout_constraintLeft_toRightOf="@id/text_peridos"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_guess_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="@id/text_guess_number"
+        app:layout_constraintTop_toBottomOf="@id/text_guess_number" />
+
+    <TextView
+        android:id="@+id/text_result_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="开奖号码"
+        app:layout_constraintLeft_toRightOf="@id/text_guess_number"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_result_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintLeft_toLeftOf="@id/text_result_number"
+        app:layout_constraintTop_toBottomOf="@id/text_result_number" />
+
+    <TextView
+        android:id="@+id/text_correctly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:text="是否中奖"
+        app:layout_constraintLeft_toRightOf="@id/text_result_number"
+        app:layout_constraintTop_toTopOf="@id/text_peridos" />
+
+    <TextView
+        android:id="@+id/tv_correctly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="是"
+        app:layout_constraintRight_toRightOf="@id/text_correctly"
+        app:layout_constraintLeft_toLeftOf="@id/text_correctly"
+        app:layout_constraintTop_toBottomOf="@id/text_correctly" />
+
+
+</android.support.constraint.ConstraintLayout>

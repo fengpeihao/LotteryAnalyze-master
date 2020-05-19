@@ -21,18 +21,22 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        BallEntityDao.createTable(db, ifNotExists);
+        OmitEntityDao.createTable(db, ifNotExists);
         DltLotteryEntityDao.createTable(db, ifNotExists);
         LotteryEntityDao.createTable(db, ifNotExists);
-        OmitEntityDao.createTable(db, ifNotExists);
+        BallEntityDao.createTable(db, ifNotExists);
+        ArrangeThreeEntityDao.createTable(db, ifNotExists);
+        ETCFBeanDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        BallEntityDao.dropTable(db, ifExists);
+        OmitEntityDao.dropTable(db, ifExists);
         DltLotteryEntityDao.dropTable(db, ifExists);
         LotteryEntityDao.dropTable(db, ifExists);
-        OmitEntityDao.dropTable(db, ifExists);
+        BallEntityDao.dropTable(db, ifExists);
+        ArrangeThreeEntityDao.dropTable(db, ifExists);
+        ETCFBeanDao.dropTable(db, ifExists);
     }
 
     /**
@@ -51,10 +55,12 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(BallEntityDao.class);
+        registerDaoClass(OmitEntityDao.class);
         registerDaoClass(DltLotteryEntityDao.class);
         registerDaoClass(LotteryEntityDao.class);
-        registerDaoClass(OmitEntityDao.class);
+        registerDaoClass(BallEntityDao.class);
+        registerDaoClass(ArrangeThreeEntityDao.class);
+        registerDaoClass(ETCFBeanDao.class);
     }
 
     public DaoSession newSession() {
